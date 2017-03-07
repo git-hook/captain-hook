@@ -5,8 +5,7 @@
 # This program initializes the encapsulating /hooks directory to
 # interface with this submodule.
 
-# TODO:comment out and remove this comment
-set -x
+# set -x
 
 pushd "$(readlink -f "$(dirname "$0")/..")" >/dev/null
 
