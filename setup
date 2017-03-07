@@ -5,14 +5,14 @@
 # This program initializes the encapsulating /hooks directory to
 # interface with this submodule.
 
-# TODO:comment out and remove this comment
-set -x
+# set -x
 
 pushd "$(readlink -f "$(dirname "$0")/..")" >/dev/null
 
-readonly HOOKS=(pre-commit prepare-commit-msg commit-msg post-commit post-checkout pre-rebase)
+# To use the post-clone script, see https://github.com/git-hook/post-clone
+readonly HOOKS=(pre-commit prepare-commit-msg commit-msg post-commit post-checkout pre-rebase post-clone)
 
 for hook in ${HOOKS[@]}; do
     mkdir -p "${hook}"
-    ln -s captain-hook/run-hook "${hook}.d"
+    ln -sf captain-hook/run-hook "${hook}.d"
 done
