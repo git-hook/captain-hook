@@ -13,6 +13,6 @@ pushd "$(readlink -f "$(dirname "$0")/..")" >/dev/null
 readonly HOOKS=(pre-commit prepare-commit-msg commit-msg post-commit post-checkout pre-rebase post-clone)
 
 for hook in ${HOOKS[@]}; do
-    mkdir -p "${hook}"
-    ln -sf captain-hook/run-hook "${hook}.d"
+    mkdir -p "${hook}.d"
+    ln -sf captain-hook/run-hook "${hook}"
 done
