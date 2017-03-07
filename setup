@@ -14,5 +14,5 @@ readonly HOOKS=(pre-commit prepare-commit-msg commit-msg post-commit post-checko
 
 for hook in ${HOOKS[@]}; do
     mkdir -p "${hook}"
-    ln -s captain-hook/run-hook "${hook}.d"
+    ln -sf captain-hook/run-hook "${hook}.d"
 done
