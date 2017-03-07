@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Written by Eric Crosson
+# 2017-03-07
+#
+# This program initializes the encapsulating /hooks directory to
+# interface with this submodule.
+
+# TODO:comment out and remove this comment
+set -x
+
+pushd "$(readlink -f "$(dirname "$0")/..")" >/dev/null
+
+readonly HOOKS=(pre-commit prepare-commit-msg commit-msg post-commit post-checkout pre-rebase)
+
+for hook in ${HOOKS[@]}; do
+    mkdir -p "${hook}"
+    ln -s captain-hook/run-hook "${hook}.d"
+done
