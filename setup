@@ -7,7 +7,9 @@
 
 # set -x
 
-pushd "$(readlink -f "$(dirname "$0")/..")" >/dev/null
+readonly submodule="$(dirname "$0")"
+source "${submodule}/captain-hook.sh"
+pushd "${submodule}/.." >/dev/null
 
 # To use the post-clone script, see https://github.com/git-hook/post-clone
 readonly HOOKS=(pre-commit prepare-commit-msg commit-msg post-commit post-checkout pre-rebase post-clone)
