@@ -1,4 +1,5 @@
 [//]: # TODO: add epic graphic
+[//]: # TODO: add some sort of ci
 
 # Overview
 
@@ -82,3 +83,19 @@ hook is to check if any action needs to be taken, and it concludes the
 answer is "no."  In this case, return a negative exit-code to skip the
 remaining non-ensured scripts in the hook directory.  Remember,
 ensured scripts are run *every* time the hook is invoked by git.
+
+# Supported platforms
+
+This project has been tested on:
+
+- [X] GNU/Linux
+
+- [X] macOS
+
+[//]: # TODO: write contribution guide encouraging crowds to help test more
+
+# Extras
+
+[//]: # TODO: write about the post-clone hook
+
+# Acknowledgements
