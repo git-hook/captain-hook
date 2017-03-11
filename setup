@@ -7,6 +7,9 @@
 
 # set -x
 
+# TODO: allow idempotence, do not act when setup has already affected
+# a dir
+
 readonly submodule="$(dirname "$0")"
 source "${submodule}/captain-hook.sh"
 pushd "${submodule}/.." >/dev/null
