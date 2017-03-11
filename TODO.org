@@ -1,0 +1,13 @@
+* TODO add epic graphic
+in the header of the readme
+* TODO add some sort of ci
+e.g. travis
+* TODO create linter -- demonstrate order of invoked scripts
+sort of like ubuntu's run-parts for crontab
+* TODO debugger? invoke them on my mark
+again, sort of like run-parts
+* TODO profile the time it takes to run an empty hook
+and add this information to the readme
+* TODO write contribution guide
+encouraging crowds to help test more
+* TODO write about the post-clone hook

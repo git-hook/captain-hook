@@ -1,11 +1,9 @@
-[//]: # TODO: add epic graphic
-[//]: # TODO: add some sort of ci
 
 # Overview
 
 This package provides a framework for git hooks following the [.d configuration approach].
 
-[.d configuration approach]: (http://blog.siphos.be/2013/05/the-linux-d-approach/)
+[.d configuration approach]: http://blog.siphos.be/2013/05/the-linux-d-approach/
 
 # Installation
 
@@ -42,12 +40,6 @@ The resulting directory structure after `setup`:
 ```
 
 # Use
-
-[//]: # TODO: create linter -- demonstrate order of invoked scripts
-[//]: # TODO: debugger? invoke them on my mark
-[//]: # TODO: add this comment delimiter to .emacs
-[//]: # TODO: remove aggressive-indent-mode from md mode
-[//]: # TODO: profile the time it takes to run an empty hook
 
 Every client-side git hook is installed, and will be called by git
 naturally.  Each git hook is intercepted by captain-hook, a wrapper to
@@ -92,10 +84,6 @@ This project has been tested on:
 
 - [X] macOS
 
-[//]: # TODO: write contribution guide encouraging crowds to help test more
-
 # Extras
-
-[//]: # TODO: write about the post-clone hook
 
 # Acknowledgements
