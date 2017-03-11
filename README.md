@@ -20,7 +20,7 @@ git submodule update
 The resulting directory structure after `setup`:
 
 ```bash
-▲ workspace/tree -I captain-hook
+▲ tree -I captain-hook
 .
 └── hooks
 ├── commit-msg -> captain-hook/run-hook
