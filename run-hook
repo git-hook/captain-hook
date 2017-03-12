@@ -10,7 +10,14 @@
 
 # set -x
 
-cd "$(dirname "$0")"
+readonly hookdir="$(dirname "$0")"
+readonly hook="$(basename "$0")"
+
+cd "${hookdir}" || {
+    echo "Aborting: could not cd into '${hookdir}'"
+    exit -1
+}
+# shellcheck disable=SC1090
 source captain-hook/captain-hook.sh
 
-runHook "$(basename "$0")" "$@"
+runHook "${hook}" "$@"
