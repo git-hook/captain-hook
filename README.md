@@ -15,8 +15,6 @@ your repository:
 
     mkdir -p hooks
     git submodule add https://github.com/ericcrosson/captain-hook hooks/captain-hook
-    git submodule init
-    git submodule update
     hooks/captain-hook/setup
 
 This creates the following directory structure:
