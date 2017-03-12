@@ -8,4 +8,4 @@ tests := $(wildcard test/*.sh)
 .PHONY: test
 
 test: $(tests)
-	bats $(tests)
+	$(tests)
