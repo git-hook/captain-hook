@@ -40,10 +40,10 @@ runHook() {
     local -r hook=$1; shift
     local rc=0
 
-    for script in "$(find "${hook}.d" \
-                           -regextype sed \
+    for script in $(find "${hook}.d" \
+                         -regextype sed \
                          -regex ".*/[0-9]\{3\}+\{0,1\}.*" | \
-                        sort)"; do
+                        sort); do
 
         # if part of the hook has failed, skip forward to the
         # `ensured` scripts
