@@ -10,14 +10,13 @@ In other words, captain-hook allows us to express each git hook as a
 
 # Installation
 
-Recommended installation is through git submodules.  In the root of
-your repository:
+Add captain-hook to your repository as a git submodule:
 
     mkdir -p hooks
     git submodule add https://github.com/ericcrosson/captain-hook hooks/captain-hook
     hooks/captain-hook/setup
 
-This creates the following directory structure:
+Invoke `setup` to create the following directory structure:
 
     ▲ tree -I captain-hook
     .
