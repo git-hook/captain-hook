@@ -106,4 +106,4 @@ is [now possible](https://github.com/git-hook/post-clone).
 # License
 
 This project is protected by
-the [MIT License](https://opensource.org/licenses/MIT).
+the [Apache license](https://www.apache.org/licenses/LICENSE-2.0).
