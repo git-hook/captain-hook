@@ -9,6 +9,8 @@
 # - provide a scalable framework for development to expand into
 # - DRY
 # - handle edge cases in git flows (mainly due to stashing)
+#
+# Note: functions beginning with an underscore are private.
 
 # set -x
 
