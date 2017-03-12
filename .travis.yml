@@ -1,0 +1,8 @@
+---
+language: bash
+
+git:
+  submodules: true
+
+script:
+  - make test

@@ -42,9 +42,9 @@ _ensuredScript() {
 
 _updateRc() {
     if [[ $1 -eq 0 ]]; then
-        echo $2
+        echo "$2"
     else
-        echo $1
+        echo "$1"
     fi
 }
 
