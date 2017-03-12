@@ -74,3 +74,65 @@ generateRandomInvalidHookScripts() {
     assert [ "${status}" -eq 0 ]
     assert [ "${output}" = '' ]
 }
+
+@test "_ensuredScript should return 0 when script is an ensure script" {
+    dut="123+-ensured-for-sure.sh"
+    run _ensuredScript "${dut}"
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" = '' ]
+}
+
+@test "_ensuredScript should return 1 when script is not an ensure script" {
+    dut="123-NOT-ensured.sh"
+    run _ensuredScript "${dut}"
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" = '' ]
+}
+
+@test "_updateRc should return $2 when $1 is zero" {
+    run _updateRc 0 5
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" -eq 5 ]
+}
+
+@test "_updateRc should return $1 when $1 is non-zero" {
+    run _updateRc 1 7
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" -eq 1 ]
+}
+
+@test "_shortCircuit should return 0 when $1 is equal to zero" {
+    run _shortCircuit 0
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" = '' ]
+}
+
+@test "_shortCircuit should return 0 when $1 is less than zero" {
+    run _shortCircuit -7
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" = '' ]
+}
+
+@test "_shortCircuit should return 1 when $1 is greater than zero" {
+    run _shortCircuit 7
+    assert [ "${status}" -eq 1 ]
+    assert [ "${output}" = '' ]
+}
+
+@test "_determineExitCode should return 0 when $1 is zero" {
+    run _determineExitCode 0
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" = '0' ]
+}
+
+@test "_determineExitCode should return 0 when $1 is less than zero" {
+    run _determineExitCode -7
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" = '0' ]
+}
+
+@test "_determineExitCode should return $1 when $1 is greater than zero" {
+    run _determineExitCode 7
+    assert [ "${status}" -eq 0 ]
+    assert [ "${output}" = '7' ]
+}

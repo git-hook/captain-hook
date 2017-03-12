@@ -36,39 +36,51 @@ _getPipeline() {
         | sort
 }
 
+_ensuredScript() {
+    [ -z "$(echo "${script}" | sed -ne '/[0-9]\{3\}+/p')" ]
+}
+
+_updateRc() {
+    if [[ $1 -eq 0 ]]; then
+        echo $2
+    else
+        echo $1
+    fi
+}
+
+_shortCircuit() {
+    local -r rc=$1; shift
+    [ "${rc}" -le 0 ]
+}
+
+_determineExitCode() {
+    local -r rc=$1; shift
+    # negative exit codes indicate a short-circuit without failure
+    if _shortCircuit "${rc}"; then
+        echo 0
+    else
+        echo "${rc}"
+    fi
+}
+
 runHook() {
     local -r hook=$1; shift
     local rc=0
 
-    for script in $(find "${hook}.d" \
-                         -regextype sed \
-                         -regex ".*/[0-9]\{3\}+\{0,1\}.*" | \
-                        sort); do
-
-        # if part of the hook has failed, skip forward to the
-        # `ensured` scripts
-        if [[ "${rc}" -ne 0 && \
-                  -z "$(echo "${script}" | sed -ne '/[0-9]\{3\}+/p')" ]]
-        then
-            continue
+    local -r pipeline=$(_getPipeline "${hook}.d")
+    while IFS= read -rd '' script; do
+        # if part of the pipeline has failed, skip forward to the
+        # "ensured" scripts
+        if [[ "${rc}" -ne 0 ]]; then
+            ! _ensuredScript "${script}" && continue
         fi
 
-        chmod u+x "${script}"
-        debug "Executing ${script}"
+        debug "Executing script: '${script}'..."
         "${script}" "$@"
-        local script_rc=$?
-        # exit code can only be modified one time
-        if [[ "${rc}" -eq 0 ]]; then
-            rc="${script_rc}"
-        fi
-    done
+        rc=$(_updateRc "${rc}" $?)
+        debug "Executing script: '${script}'...done"
+    done <  <("${pipeline}")
 
-    # negative exit codes indicate a short-circuit without failure
-    debug "Return code is ${rc}"
-    if [[ "${rc}" -le 0 ]]; then
-        exit 0
-    else
-        exit "${rc}"
-    fi
+    exit "$(_determineExitCode "${rc}")"
 }
 export runHook
