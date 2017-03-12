@@ -7,9 +7,6 @@
 
 # set -x
 
-# TODO: allow idempotence, do not act when setup has already affected
-# a dir
-
 readonly submodule="$(dirname "$0")"
 # shellcheck disable=SC1090
 source "${submodule}/captain-hook.sh"
