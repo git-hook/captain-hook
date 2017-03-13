@@ -51,14 +51,14 @@ the scripts in the relevant hook-directory.  The scripts are invoked
 in numerical order, from 000-999. Note that scripts beginning with
 anything other than a three-digit number between one and nine-hundred
 ninety-nine, inclusive, will be ignored.  It is advisable to follow
-this outlined heirarchy for naming scripts:
+this outlined hierarchy for naming scripts:
 
 000-099 System level initialization scripts <br>
 100-899 User level git hook actions <br>
 900-999 System level teardown scripts <br>
 
 In order to fully leverage the benefits of this numeric system,
-consider allowing distance between filenames of discerete parts of a
+consider allowing distance between filenames of discrete parts of a
 single git-hook pipeline.  For example, the pre-push pipeline may
 build and test, but rather than naming your scripts 100-build.sh and
 101-test.sh, leave room for future expansion: 110-build.sh and
