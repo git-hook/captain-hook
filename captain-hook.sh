@@ -35,7 +35,7 @@ debug() {
 _getPipeline() {
     searchDir=$1; shift
     find "${searchDir}" \
-         -regex ".*/[0-9]\{3\}+\{0,1\}.*" \
+         -regex ".*/[0-9][0-9][0-9]+?.*" \
         | sort
 }
 
