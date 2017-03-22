@@ -78,10 +78,11 @@ _determineExitCode() {
 # This method is called by captain-hook.  It will run the user's
 # defined git-hook pipeline when a client-side hook is invoked by git.
 runHook() {
-    local -r hook=$1; shift
+    local -r executing_hook=$1; shift
     local rc=0
 
-    local -r pipeline=$(_getPipeline "${hook}.d")
+    local -r pipeline=$(_getPipeline "${executing_hook}.d")
+    debug "Pipeline is ${pipeline}"
     while IFS= read -rd '' script; do
         # if part of the pipeline has failed, skip forward to the
         # "ensured" scripts
