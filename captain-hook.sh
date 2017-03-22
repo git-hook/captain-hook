@@ -81,9 +81,11 @@ runHook() {
     local -r executing_hook=$1; shift
     local rc=0
 
-    local -r pipeline=$(_getPipeline "${executing_hook}.d")
-    debug "Pipeline is ${pipeline}"
-    while IFS= read -rd '' script; do
+    local -r _tmpfile=$(mktemp captain-hook.XXXX)
+    _getPipeline "${executing_hook}.d" > "${_tmpfile}"
+    debug "PWD is $PWD"
+    debug "Pipeline is $(cat "${_tmpfile}")"
+    while IFS= read -r script; do
         # if part of the pipeline has failed, skip forward to the
         # "ensured" scripts
         if [[ "${rc}" -ne 0 ]]; then
@@ -94,7 +96,8 @@ runHook() {
         "${script}" "$@"
         rc=$(_updateRc "${rc}" $?)
         debug "Executing script: '${script}'...done"
-    done <  <("${pipeline}")
+    done < "${_tmpfile}"
+    rm -f "${_tmpfile}"
 
     exit "$(_determineExitCode "${rc}")"
 }
