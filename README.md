@@ -1,5 +1,5 @@
 # Overview
-[![Build Status](https://travis-ci.org/EricCrosson/captain-hook.svg?branch=master)](https://travis-ci.org/EricCrosson/captain-hook)
+[![Build Status](https://travis-ci.org/git-hook/captain-hook.svg?branch=master)](https://travis-ci.org/git-hook/captain-hook)
 
 This package provides a framework for git hooks following the [*.d configuration approach].
 

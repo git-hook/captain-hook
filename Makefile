@@ -8,4 +8,5 @@ tests := $(wildcard test/*.sh)
 .PHONY: test
 
 test: $(tests)
-	@$(foreach test,$(tests),$(test);)
+	./test/libs/bats/bin/bats $(tests)
+	#./test/libs/bats/bin/bats @$(foreach test,$(tests),$(test);)
