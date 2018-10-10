@@ -13,7 +13,7 @@ In other words, captain-hook allows us to express each git hook as a
 Add captain-hook to your repository as a git submodule:
 
     mkdir -p hooks
-    git submodule add https://github.com/ericcrosson/captain-hook hooks/captain-hook
+    git submodule add https://github.com/git-hook/captain-hook hooks/captain-hook
     hooks/captain-hook/setup
 
 Invoke `setup` to create the following directory structure:
